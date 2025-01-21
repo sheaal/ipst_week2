@@ -4,10 +4,10 @@ import { EButtonUsage } from "../../common/enum";
 const main = () => {
     let currentInput = '';
     let result = 0;
+    let lastOperator = '';
 
     const calculate = (expression: string): number => {
         try {
-            expression = expression.replace(/X/g, '*');
             return eval(expression);
         } catch (error) {
             console.error("Ошибка вычисления:", error);
@@ -19,13 +19,25 @@ const main = () => {
         if (state === EButtonUsage.OPERATOR_C) {
             currentInput = '';
             result = 0;
+            lastOperator = '';
             print(result);
         } else if (state === EButtonUsage.OPERATOR_EQUAL) {
             result = calculate(currentInput);
             print(result);
             currentInput = '';
+            lastOperator = '';
+        } else if (Object.values(EButtonUsage).includes(state) && state.match(/[+\-*/]/)) {
+            if (currentInput) {
+                if (lastOperator) {
+                    currentInput = currentInput.slice(0, -2);
+                }
+                currentInput += ` ${state} `;
+                lastOperator = state;
+                print(currentInput);
+            }
         } else {
             currentInput += state;
+            lastOperator = '';
             print(currentInput);
         }
     };

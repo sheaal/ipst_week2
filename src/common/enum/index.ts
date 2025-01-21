@@ -5,7 +5,7 @@ enum EButtonUsage {
     BUTTON_7 = '7',
     BUTTON_8 = '8',
     BUTTON_9 = '9',
-    OPERATOR_MULTIPLY = 'X',
+    OPERATOR_MULTIPLY = '*',
     BUTTON_4 = '4',
     BUTTON_5 = '5',
     BUTTON_6 = '6',
