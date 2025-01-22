@@ -16,7 +16,12 @@ const main = () => {
     };
 
     return (state: EButtonUsage) => {
-        if (state === EButtonUsage.OPERATOR_C) {
+        if (state === EButtonUsage.OPERATOR_AC) {
+            currentInput = '';
+            result = 0;
+            lastOperator = '';
+            print(result);
+        } else if (state === EButtonUsage.OPERATOR_C) {
             currentInput = '';
             result = 0;
             lastOperator = '';
